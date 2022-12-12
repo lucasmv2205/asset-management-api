@@ -1,0 +1,19 @@
+{
+  "name": "asset-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "lucasmv2205",
+  "license": "MIT",
+  "scripts": {
+    "dev": "ts-node-dev src/server.ts"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.14",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^4.9.4"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongose": "^0.0.2-security"
+  }
+}
