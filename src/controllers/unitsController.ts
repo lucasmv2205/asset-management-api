@@ -32,6 +32,29 @@ class UnitController{
     })
   }
 
+  static deleteUnit = (req, res) => {
+    const { id } = req.params
+    units.findByIdAndDelete(id, (err) => {
+      if(!err){
+        res.status(200).send({message: 'unit deleted successfuly'})
+      }else{
+        res.status(500).send({message: `${err.message} - error deleting unit`})
+      }
+    })
+  }
+
+  static updateUnit = (req, res) => {
+    const { id } = req.params
+
+    units.findByIdAndUpdate(id, {$set: req.body}, (err) => {
+      if(!err){
+        res.status(200).send({message: 'unit updated successfuly'})
+      }else{
+        res.status(500).send({message: `${err.message} - error updating unit`})
+      }
+    })
+  }
+
 }
 
 export default UnitController

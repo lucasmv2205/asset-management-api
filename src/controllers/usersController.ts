@@ -32,6 +32,29 @@ class UnitController{
     })
   }
 
+  static deleteUser = (req, res) => {
+    const { id } = req.params
+    users.findByIdAndDelete(id, (err) => {
+      if(!err){
+        res.status(200).send({message: 'user deleted successfuly'})
+      }else{
+        res.status(500).send({message: `${err.message} - error deleting user`})
+      }
+    })
+  }
+
+  static updateUser = (req, res) => {
+    const { id } = req.params
+
+    users.findByIdAndUpdate(id, {$set: req.body}, (err) => {
+      if(!err){
+        res.status(200).send({message: 'user updated successfuly'})
+      }else{
+        res.status(500).send({message: `${err.message} - error updating user`})
+      }
+    })
+  }
+
 }
 
 export default UnitController

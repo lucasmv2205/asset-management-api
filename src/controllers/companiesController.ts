@@ -32,6 +32,29 @@ class CompanyController{
     })
   }
 
+  static deleteCompany = (req, res) => {
+    const { id } = req.params
+    companies.findByIdAndDelete(id, (err) => {
+      if(!err){
+        res.status(200).send({message: 'company deleted successfuly'})
+      }else{
+        res.status(500).send({message: `${err.message} - error deleting company`})
+      }
+    })
+  }
+
+  static updateCompany = (req, res) => {
+    const { id } = req.params
+
+    companies.findByIdAndUpdate(id, {$set: req.body}, (err) => {
+      if(!err){
+        res.status(200).send({message: 'company updated successfuly'})
+      }else{
+        res.status(500).send({message: `${err.message} - error updating company`})
+      }
+    })
+  }
+
 }
 
 export default CompanyController
