@@ -1,0 +1,312 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "version": "1.0.0",
+    "title": "asset management api",
+    "description": "documentation for asset api"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3333/",
+      "description": "development environment"
+    }
+  ],
+  "paths": {
+    "/companies/": {
+      "post": {
+        "summary": "Create new company",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "example": "1"
+                  },
+                  "name": {
+                    "type": "string",
+                    "example": "empresa 1"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Company created successfuly"
+          },
+          "400": {
+            "description": "incorrect parameters"
+          }
+        }
+      }
+    },
+    "/units/": {
+      "post": {
+        "summary": "Create new unit",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "example": "1"
+                  },
+                  "name": {
+                    "type": "string",
+                    "example": "unidade 1"
+                  },
+                  "companyId": {
+                    "type": "string",
+                    "example": "1"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Unit created successfuly"
+          },
+          "400": {
+            "description": "incorrect parameters"
+          }
+        }
+      }
+    },
+    "/users/": {
+      "post": {
+        "summary": "Create new user",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "example": "1"
+                  },
+                  "name": {
+                    "type": "string",
+                    "example": "lucas"
+                  },
+                  "email": {
+                    "type": "string",
+                    "example": "lmartins@dsa.com"
+                  },
+                  "companyId": {
+                    "type": "string",
+                    "example": "1"
+                  },
+                  "unitId": {
+                    "type": "string",
+                    "example": "1"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "User created successfuly"
+          },
+          "400": {
+            "description": "incorrect parameters"
+          }
+        }
+      }
+    },
+    "/assets/": {
+      "post": {
+        "summary": "Create new asset",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "example": "1"
+                  },
+                  "name": {
+                    "type": "string",
+                    "example": "motor 1"
+                  },
+                  "image": {
+                    "type": "string",
+                    "example": "https://i.picsum.photos/id/237/200/300.jpg?hmac=TmmQSbShHz9CdQm0NkEjx1Dyh_Y984R9LpNrpvH2D_U"
+                  },
+                  "description": {
+                    "type": "string",
+                    "example": "description"
+                  },
+                  "model": {
+                    "type": "string",
+                    "example": "motor"
+                  },
+                  "status": {
+                    "type": "string",
+                    "values": ["Running", "Alerting", "Stopped"],
+                    "example": "Running"
+                  },
+                  "healthLevel": {
+                    "type": "number",
+                    "example": 70
+                  },
+                  "userId": {
+                    "type": "string",
+                    "example": "1"
+                  },
+                  "unitId": {
+                    "type": "string",
+                    "example": "1"
+                  },
+                  "companyId": {
+                    "type": "string",
+                    "example": "1"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Item criado com sucesso"
+          },
+          "400": {
+            "description": "Parâmetros informados estão incorretos"
+          }
+        }
+      }
+    },
+    "/assets": {
+      "get": {
+        "summary": "get all assets",
+        "responses": {
+          "200": {
+            "description": "Assets returned successfuly"
+          },
+          "404": {
+            "description": "not found"
+          }
+        }
+      }
+    },
+    "/assets/{id}": {
+      "get": {
+        "summary": "get asset by id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "example": "6397df1df192267b6d080c8e"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Asset returned successfuly"
+          },
+          "404": {
+            "description": "invalid id or item not found"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Asset": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "image": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "model": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "values": ["Running", "Alerting", "Stopped"]
+          },
+          "healthLevel": {
+            "type": "number"
+          },
+          "userId": {
+            "type": "string"
+          },
+          "unitId": {
+            "type": "string"
+          },
+          "companyId": {
+            "type": "string"
+          }
+        }
+      },
+      "User": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "companyId": {
+            "type": "string"
+          },
+          "unitId": {
+            "type": "string"
+          }
+        }
+      },
+      "Company": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "Unit": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "companyId": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

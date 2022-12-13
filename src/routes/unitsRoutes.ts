@@ -8,6 +8,6 @@ router
   .get('/units/:id', UnitController.getById)
   .delete('/units/:id', UnitController.deleteUnit)
   .put('/units/:id', UnitController.updateUnit)
-  .post('/units', UnitController.createUnit)
+  .post('/units/', UnitController.createUnit)
 
 export default router

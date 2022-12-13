@@ -1,4 +1,3 @@
-// import autores from '../models/Autor.js'
 import companies from "../entities/Company";
 
 class CompanyController{
