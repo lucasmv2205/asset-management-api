@@ -17,4 +17,4 @@ app.use('/docs', SwaggerUi.serve, SwaggerUi.setup(swaggerFile))
 routes(app)
 
 
-app.listen(3333, () => console.log("Server is running"));
+app.listen(3333, () => console.log("Server is running on port 3333"));
