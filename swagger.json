@@ -12,7 +12,7 @@
     }
   ],
   "paths": {
-    "/companies/": {
+    "/companies": {
       "post": {
         "summary": "Create new company",
         "requestBody": {
@@ -42,9 +42,20 @@
             "description": "incorrect parameters"
           }
         }
+      },
+      "get": {
+        "summary": "get all companies",
+        "responses": {
+          "200": {
+            "description": "Companies returned successfuly"
+          },
+          "404": {
+            "description": "not found"
+          }
+        }
       }
     },
-    "/units/": {
+    "/units": {
       "post": {
         "summary": "Create new unit",
         "requestBody": {
@@ -78,9 +89,20 @@
             "description": "incorrect parameters"
           }
         }
+      },
+      "get": {
+        "summary": "get all units",
+        "responses": {
+          "200": {
+            "description": "Units returned successfuly"
+          },
+          "404": {
+            "description": "not found"
+          }
+        }
       }
     },
-    "/users/": {
+    "/users": {
       "post": {
         "summary": "Create new user",
         "requestBody": {
@@ -122,9 +144,20 @@
             "description": "incorrect parameters"
           }
         }
+      },
+      "get": {
+        "summary": "get all users",
+        "responses": {
+          "200": {
+            "description": "Users returned successfuly"
+          },
+          "404": {
+            "description": "not found"
+          }
+        }
       }
     },
-    "/assets/": {
+    "/assets": {
       "post": {
         "summary": "Create new asset",
         "requestBody": {
